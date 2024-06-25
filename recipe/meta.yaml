@@ -1,5 +1,5 @@
 {% set name = "quasiqueue" %}
-{% set version = "0.4.0" %}
+{% set version = "0.4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/quasiqueue-{{ version }}.tar.gz
-  sha256: 53eb91a1a4f79e0d0eee7d9b8be37543a74de16988f6e0d47d818528358fbe55
+  sha256: c267c343e676753192462be4cb453bad18dbb4812deba8d048dd83e36a379f67
 
 build:
   entry_points:
