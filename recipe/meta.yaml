@@ -1,5 +1,6 @@
 {% set name = "quasiqueue" %}
 {% set version = "0.5.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
@@ -18,12 +19,12 @@ build:
 
 requirements:
   host:
-    - python >=3.10
+    - python {{ python_min }}
     - setuptools >=67.0
     - setuptools-scm >=7.1
     - pip
   run:
-    - python >=3.10
+    - python >={{ python_min }}
     - psutil
     - pydantic >=2.0,<3.dev0
     - pydantic-settings
@@ -37,6 +38,7 @@ test:
     - quasiqueue --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/tedivm/quasiqueue
