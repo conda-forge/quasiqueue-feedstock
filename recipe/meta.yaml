@@ -1,13 +1,14 @@
 {% set name = "quasiqueue" %}
-{% set version = "0.4.2" %}
+{% set version = "0.5.0" %}
+{% set python_min = "3.10" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/quasiqueue-{{ version }}.tar.gz
-  sha256: c267c343e676753192462be4cb453bad18dbb4812deba8d048dd83e36a379f67
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/quasiqueue-{{ version }}.tar.gz
+  sha256: c8a97c30e2c975383101b887e54f829d64e26a45c233d8d76fb6a6c5024c5815
 
 build:
   entry_points:
@@ -18,12 +19,12 @@ build:
 
 requirements:
   host:
-    - python >=3.10
+    - python {{ python_min }}
     - setuptools >=67.0
     - setuptools-scm >=7.1
     - pip
   run:
-    - python >=3.10
+    - python >={{ python_min }}
     - psutil
     - pydantic >=2.0,<3.dev0
     - pydantic-settings
@@ -37,6 +38,7 @@ test:
     - quasiqueue --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/tedivm/quasiqueue
