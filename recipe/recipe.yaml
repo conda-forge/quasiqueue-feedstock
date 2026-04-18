@@ -1,0 +1,59 @@
+schema_version: 1
+
+context:
+  name: quasiqueue
+  version: "0.6.0"
+  python_min: "3.10"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/quasiqueue-${{ version }}.tar.gz
+  sha256: f7a258b61ab79b763b3a73466b3722f21f05f58f81f5ef9fde807883282e5390
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - quasiqueue = quasiqueue.cli:app
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=67.0
+    - setuptools-scm >=7.1
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - psutil
+    - pydantic >=2.0,<3.dev0
+    - pydantic-settings
+    - typer >=0.9.0
+
+tests:
+  - python:
+      imports:
+        - quasiqueue
+      pip_check: true
+      python_version: 
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - quasiqueue --help
+
+about:
+  summary: A Simple High Performance Multiprocess Queue
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/tedivm/quasiqueue
+
+extra:
+  recipe-maintainers:
+    - thewchan
