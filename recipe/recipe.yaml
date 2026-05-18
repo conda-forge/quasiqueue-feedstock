@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: quasiqueue
-  version: "0.6.0"
+  version: "0.7.0"
   python_min: "3.10"
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/quasiqueue-${{ version }}.tar.gz
-  sha256: f7a258b61ab79b763b3a73466b3722f21f05f58f81f5ef9fde807883282e5390
+  sha256: 4afc6467bda722c67a9743f2c8e99cd3f5063975a16dd23b6b0af5c543e8cbf1
 
 build:
   number: 0
@@ -39,7 +39,7 @@ tests:
       imports:
         - quasiqueue
       pip_check: true
-      python_version: 
+      python_version:
         - ${{ python_min }}.*
         - "*"
   - requirements:
